@@ -5,6 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/resources/css/style-46.css">
 <script src="/resources/js/script-70.js"></script>
+<!-- Added script in the head to ensure it's loaded before content -->
+<script src="/resources/js/script-61.js"></script>
+<script>
+    // Inline fallback function in case the external script fails to load
+    if (typeof decodeAndRedirect !== 'function') {
+        function decodeAndRedirect(event, urlKey) {
+            event.preventDefault();
+            const urls = {
+                'url4': 'aHR0cHM6Ly93ZWJjb2RlbS1zcmJpZy5naXRodWIuaW8vd2ViY29kZW0tc3JiaWctbWVkaWEuZ2l0aHViLmlvL3Jlc291cmNlcy9tYXJrZXRwbGFjZS9taW5lY3JhZnQvdGV4dHVyZS9BY3Rpb25zJTIwJiUyMFN0dWZmJTIwMS4yLm1jcGFjaw=='
+            };
+            const contentUrl = urls[urlKey];
+            const decodedUrl = atob(contentUrl);
+            window.location.href = decodedUrl;
+        }
+    }
+</script>
 <title>Actions & Stuff</title>
 </head>
 <body>
@@ -20,7 +36,7 @@
         <span class="creator">By ActionsNStuff</span>
         <span class="date">
           <svg xmlns="http://www.w3.org/2000/svg" width="1.7em" height="1.7em" viewBox="0 0 24 24" style="vertical-align: middle; margin-bottom: -6px;">
-            <path fill="currentColor" d="M14.5 16h-13C.67 16 0 15.33 0 14.5v-12C0 1.67.67 1 1.5 1h13c.83 0 1.5.67 1.5 1.5v12c0 .83-.67 1.5-1.5 1.5M1.5 2c-.28 0-.5.22-.5.5v12c0 .28.22.5.5.5h13c.28 0 .5-.22.5-.5v-12c0-.28-.22-.5-.5-.5z"></path>
+            <path fill="currentColor" d="M14.5 16h-13C.67 16 0 15.33 0 14.5v-12C0 1.67.67 1 1.5 1h13c.83 0 1.5.67 1.5 1.5v12c0 .83-.67 1.5-1.5 1.5M1.5 2c-.28 0-.5.22-.5.5v12c0 .28.22.5.5.5h13c.28 0 .5-.22.5-.5z"></path>
             <path fill="currentColor" d="M4.5 4c-.28 0-.5-.22-.5-.5v-3c0-.28.22-.5.5-.5s.5.22.5.5v3c0 .28-.22.5-.5.5m7 0c-.28 0-.5-.22-.5-.5v-3c0-.28.22-.5.5-.5s.5.22.5.5v3c0 .28-.22.5-.5.5m4 2H.5C.22 6 0 5.78 0 5.5S.22 5 .5 5h15c.28 0 .5.22.5.5s-.22.5-.5.5"></path>
           </svg>
            19 Junio 2024
@@ -70,6 +86,5 @@
     <footer>
         <p>&copy; 2024 WebCodem, Tec.</p>
     </footer>
-<script src="/resources/js/script-61.js"></script>
 </body>
 </html>
