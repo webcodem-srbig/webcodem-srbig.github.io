@@ -6,18 +6,21 @@ const urls = {
   'url5': 'aHR0cHM6Ly93ZWJjb2RlbS1tZWRpYS5naXRodWIuaW8vcmVzb3VyY2VzL21hcmtldHBsYWNlL21pbmVjcmFmdC90ZXh0dXJhL0JhcmUgQm9uZSBQbHVzIFtCRVRBXS5tY3BhY2s',
 };
 
-// Rename the function to match what's called in the HTML
+// Updated function to fix URL encoding in filename
 function decodeAndRedirect(event, urlKey) {
   event.preventDefault(); 
   
-  // Direct download without overlay
   const contentUrl = urls[urlKey];
   const decodedUrl = atob(contentUrl);
   
-  // Create a hidden anchor and trigger download
+  // Get filename from URL and decode URL-encoded characters
+  let filename = decodedUrl.split('/').pop();
+  filename = decodeURIComponent(filename); // This converts %20 to spaces and handles other URL-encoded characters
+  
+  // Create a hidden anchor and trigger download with the decoded filename
   const link = document.createElement('a');
   link.href = decodedUrl;
-  link.download = decodedUrl.split('/').pop();
+  link.download = filename;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
