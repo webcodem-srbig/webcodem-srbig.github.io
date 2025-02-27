@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marketplace</title>
     <link rel="stylesheet" href="/resources/css/style-45.css">
+    <script src="/resources/js/script-70.js"></script>
+    <script src="/resources/js/script-61.js"></script>
+    <style>
+        /* Add specific style for clickable image */
+        .image-container a {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        
+        .image-container a img {
+            pointer-events: auto; /* Override the default pointer-events: none */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .image-container a:hover img {
+            transform: scale(1.03); /* Subtle zoom effect on hover */
+        }
+    </style>
 </head>
 <body>
     <h1 class="page-title">Marketplace</h1>
@@ -15,12 +35,14 @@
     
     <div class="container">
         <div class="image-container">
-            <img src="https://webcodem-srbig.github.io/webcodem-srbig-media.github.io/resources\multimedia\image\actions_&_stuff.jpg" alt="Actions & Stuff Texture Pack">
+            <a href="actions-&-stuff/index.html" title="Ver detalles de Actions & Stuff">
+                <img src="https://webcodem-srbig.github.io/webcodem-srbig-media.github.io/resources\multimedia\image\actions_&_stuff.jpg" alt="Actions & Stuff Texture Pack">
+            </a>
         </div>
         <div class="product-title">Actions & Stuff</div>
         <p class="product-description">¡Transforma tu experiencia en Minecraft Bedrock con el paquete de texturas Actions & Stuff! Este paquete está especialmente diseñado para ofrecerte animaciones más fluidas y realistas, elevando el nivel de inmersión en tu juego.</p>
         <div class="buttons">
-            <a href="actions-&-stuff/index.html" class="texture-link">Descargar</a>
+            <a href="javascript:void(0)" onclick="decodeAndRedirect(event, 'url4')" class="texture-link">Descargar</a>
             <a href="#" class="button-secondary">Gratis</a>
         </div>
     </div>
