@@ -6,32 +6,39 @@ const urls = {
   'url5': 'aHR0cHM6Ly93ZWJjb2RlbS1tZWRpYS5naXRodWIuaW8vcmVzb3VyY2VzL21hcmtldHBsYWNlL21pbmVjcmFmdC90ZXh0dXJhL0JhcmUgQm9uZSBQbHVzIFtCRVRBXS5tY3BhY2s',
 };
 
-// Rename the function to match what's called in the HTML
 function decodeAndRedirect(event, urlKey) {
-  event.preventDefault(); 
+  event.preventDefault();
+  console.log("Download initiated for:", urlKey);
   
-  // Direct download without overlay
-  const contentUrl = urls[urlKey];
-  const decodedUrl = atob(contentUrl);
-  
-  // Create a hidden anchor and trigger download
-  const link = document.createElement('a');
-  link.href = decodedUrl;
-  link.download = decodedUrl.split('/').pop();
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  try {
+    // Get the encoded URL
+    const contentUrl = urls[urlKey];
+    if (!contentUrl) {
+      console.error("URL key not found:", urlKey);
+      return;
+    }
+    
+    // Decode the Base64 URL
+    const decodedUrl = atob(contentUrl);
+    console.log("Decoded URL:", decodedUrl);
+    
+    // Redirect to the URL directly (simpler approach)
+    window.location.href = decodedUrl;
+  } catch (error) {
+    console.error("Error during download:", error);
+  }
 }
 
-// Keep the original function for backward compatibility
+// Legacy function for backward compatibility
 function Download(event, urlKey) {
   decodeAndRedirect(event, urlKey);
 }
 
-function closePopup() {
-  document.getElementById('overlay').style.display = 'none';
-}
-
+// Don't try to hide overlay that may not exist
 document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('overlay').style.display = 'none';
+  console.log("Script-61 loaded successfully");
+  const overlay = document.getElementById('overlay');
+  if (overlay) {
+    overlay.style.display = 'none';
+  }
 });
