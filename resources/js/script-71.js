@@ -1,5 +1,5 @@
 var idioma = navigator.language || navigator.userLanguage; 
 
         if (idioma.startsWith('en')) {
-            window.location.href = 'https://webcodem-srbig.github.io/marketplace-en-us/prime'; 
+            window.location.href = `https://webcodem-srbig.github.io/marketplace-en-us/prime's-hd-textures`;
         }
